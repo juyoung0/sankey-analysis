@@ -1,0 +1,56 @@
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+var Arr,Trr,Irr,Brr;
+var html='';
+var data2,data3;
+window.onload=function(){
+
+  $.getJSON('../json/stat_new.json', function(data) {
+
+     $.each(data, function(entryIndex, entry) {
+          for(var i=0;i<entry.length;i++){
+            var user_info = "user_name = "+entry[i].user;//유저이름
+            var proj_annotation = "proj_annotation = "+entry[i].proj_annotation;//전체 어노테이션
+           // var proj_vis_types = "proj_vis_types = <br>"+ changeVisArr(filterArray(entry[i].proj_vis_types));//전체 비스타입
+            var proj_branch = 'proj_branch = '+entry[i].proj_branch;//전체 브렌치
+            var proj_log="proj_log = "+entry[i].proj_log;//# of interactions
+            if(entry[i].session != null){//problem 당 정보를 얻을 수 있는 곳
+                for(var j=0;j<entry[i].session.length;j++){
+                    //var session_name="Problem "+getProblemNum(entry[i].session[j].session_name);//문제이름
+                    //var vis_type="vis_type : " +  changeVisArr(filterArray(entry[i].session[j].vis_types));//비스타입
+                    var branch="branch : "+entry[i].session[j].branch;//브렌치
+                    var annotaion="annotation : "+entry[i].session[j].annotation;//어노테이션
+                }
+            }
+            html+=entry[i].user+'//'+entry[i].proj_branch+'//'+entry[i].proj_log+'<br>';
+            /*Brr.push(entry[i].proj_branch);
+            Irr.push(entry[i].proj_log);*/
+
+          }
+      });
+     data2=JSON.stringify(data);
+  });
+   $.getJSON('../json/accuracy_time.json', function(data) {
+       var html = '';
+       $.each(data, function(entryIndex, entry) {
+         for(var i=1;i<=5;i++){
+             /* Arr.push(entry.accuracy);
+              Trr.push(entry.time);*/
+               html+=entry.user_name+'//'+entry.accuracy+'//'+entry.time+'<br>';
+
+         }
+       });
+       data3=JSON.stringify(data);
+   });
+}
+function show(){
+    $('#show').html(html);
+}
+function showData(){
+
+    $('#show').html(data2);
+}
+</script>
+<button onclick="show()">click!</button>
+<button onclick="showData()">click!!</button>
+<div id="show"></div>

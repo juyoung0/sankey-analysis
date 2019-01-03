@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery를 이용한 JSON 데이터 구하기</title>
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/index_style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+      function loadJSON_right(){
+        $.getJSON('../json/accuracy_time.json', function(data) {
+            var html = '';
+            $('#dictionary2').html(data);
+          });
+      }
+      function getProblemName(str){
+          for(var i=1;i<=5;i++){
+             if(str.indexOf(i)!=-1){
+                 return "Problem "+str.charAt(str.indexOf(i));
+             }
+          }
+      }
+	function filterArray(arr){
+	    var retArr=[],chk=true;
+	    if(arr!=null) {
+        $.each(arr,function(entryIndex, entry){
+            if(retArr.length==0){retArr.push(entry);}
+            else{ for(var i=0; i<retArr.length;i++) {if(entry!=retArr[i]){chk=false;}else{chk=true;break;}}
+                   if(!chk){retArr.push(entry);}
+                   chk=true; }
+        });
+	    }
+	    return retArr;
+  }
+  function changeVisArr(arr){
+	    var retArr=[];
+	    if(arr!=null){
+	        $.each(arr,function(entryIndex,entry){
+	           if(entry=="Parallel Coordinate Plot"){
+                  retArr.push("PCP");
+             }else if(entry=="Scatter Plot"){
+                  retArr.push("SP");
+             }else if(entry=="Scatterplot Matrix"){
+                  retArr.push("SPLOM");
+             }
+          });
+      }
+      return retArr;
+  }
+	$(document).ready(function() {
+	    $.getJSON('../json/stat_new.json', function(data) {
+	      var html = '';
+	     $.each(data, function(entryIndex, entry) {
+	    	  for(var i=0;i<entry.length;i++){
+	    	    var user_info = "user_name = "+entry[i].user;//유저이름
+            var proj_annotation = "proj_annotation = "+entry[i].proj_annotation;//전체 어노테이션
+            var proj_vis_types = "proj_vis_types = "+ changeVisArr(filterArray(entry[i].proj_vis_types));//전체 비스타입
+            var proj_branch = 'proj_branch = '+entry[i].proj_brandh;//전체 브렌치
+            html+="<h1>"+user_info+'</h1><h3>'+proj_vis_types+'    <a style="color:red">';
+            if(filterArray(entry[i].proj_vis_types).length!=null){
+                html+=filterArray(entry[i].proj_vis_types).length;
+            }
+             html+='</a>'+'<br>'+proj_annotation+'<br>'+proj_branch+'<br>';
+            if(entry[i].session != null){//problem 당 정보를 얻을 수 있는 곳
+                for(var j=0;j<entry[i].session.length;j++){
+                    var session_name="session_name = "+getProblemName(entry[i].session[j].session_name);//문제이름
+                    var vis_type="vis_type = " + changeVisArr(filterArray(entry[i].session[j].vis_types));//비스타입
+                    var branch="branch = "+entry[i].session[j].branch;//브렌치
+                    var annotaion="annotation = "+entry[i].session[j].annotation;//어노테이션
+                   html+=session_name+'<br>'+vis_type+'<br>'+branch+'<br>'+annotaion;
+                }
+            }
+	    	  }
+	    	  html+='</h3>';
+	      });
+	      console.log(html);
+	      $('#dictionary').html(html);
+	    });
+	    return false;
+	});
+
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <div class="letters">
+        <div class="letter" id="target">
+          <h3><a href="#">클릭</a></h3>
+      	</div>
+   	  </div>
+
+      <div id="dictionary"></div>
+      <div id="dictionary2"></div>
+    </div>
+  </body>
+</html>

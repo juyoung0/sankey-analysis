@@ -1,0 +1,138 @@
+<html>
+<head>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="../js/json2.js"></script>
+  <script src="../js/json_data.js"></script>
+  <script>
+    var Iarr,Barr;
+    var data3;
+    var user_arr=["B4","B14"];
+    var accuracy=[];
+    window.onload=function(){
+      /*alert(json_data1);
+      alert(JSON.stringify(json_data1));
+      alert(json_data2);
+      alert(JSON.stringify(json_data2));*/
+    }
+
+    function onload_2() {
+       $.getJSON('../json/accuracy_time.json', function(json) {
+            data3=JSON.stringify(json);
+            alert(json);
+            alert(data3.length);
+            data3=JSON.parse(data3);
+            for(var i=0;i<data3.length;i++){
+                for(var j=0;j<user_arr.length;j++) {
+                  if (data3[i].user_name == user_arr[j]) {
+                      accuracy[j]=data3[i].accuracy;
+                      alert(accuracy[j]);
+                  }
+                }
+            }
+        });
+    } function only(){
+        alert(json_data1);
+        for(var i=0;i<2;i++) alert(i);
+        onload_2();
+        for(var i=0;i<2;i++) alert(i);
+    }
+     function preload() {
+      //alert('ff');
+      var data = loadJSON("../json/accuracy_time.json");//str
+      var data2= loadJSON("../json/stat_new.json");//str
+
+      fillArr(data,data2);
+
+      $('#display').html(Iarr+'<br>'+Barr);
+      $('#display2').html(data3);
+    }
+    function loadJSON(url){
+        $.getJSON(url, function(json) {
+            var ret_val = JSON.stringify(json);
+            alert('ret_val='+ret_val);
+            return ret_val;
+
+        });
+    }
+    function fillArr(data,data2) {
+      //data=JSON.parse(data);
+      data2=JSON.parse(data2);
+      alert(data);
+      //alert('aa');
+      if(data!=null){
+          $.each(data, function(entryIndex, entry) {var i=0; Aarr[i] = entry.accuracy;user_Aarr[i]=entry.user_name; i++;});
+          $.each(data, function(entryIndex, entry) {var j=0;Tarr[j] = entry.time;user_Tarr[j]=entry.user_name; j++});
+      }
+      if(data2!=null){
+          alert('bb');
+        $.each(data2, function(entryIndex, entry) {
+          for (var i = 0; i < entry.length; i++) {
+            Iarr[i] = entry[i].proj_log;user_Iarr[i] = entry[i].user;
+            Barr[i] = entry[i].proj_branch;user_Barr[i] = entry[i].user;
+          }
+        });
+      }
+    }
+    function afterload(){
+        $('#display3').html(accuracy);
+    }
+  </script>
+  <script>
+    var user_arrA=['A8','A9','A11','A12','A13','A14','A15','A18','A19','A20','A21','A22','B26','B28','B29'];
+    function findUser(user){
+        var arr=user_arrA;
+        for(var j=0;j<arr.length;j++) {
+          if(arr[j]==user) return true;
+        }
+        return false;
+    }
+    function test(){
+
+        var data_arr=[],data_user_arr=[];
+        var newArr=[];
+        $.each(json_data1, function(entryIndex, entry) {
+             for(var i=0;i<entry.length;i++){
+                 if(findUser(entry[i].user)){
+                     for(var j=1;j<=5;j++){
+                         data_arr.push(entry[i].session[j-1].log);
+                         data_user_arr.push(entry[i].user+'Problem'+j);
+                     }
+                 }
+                }
+         });
+        /*
+        var uni_data_arr=[];var uni_data_user_arr=[];
+        $.each(data_arr, function(i, el){
+          if($.inArray(el, uni_data_arr) === -1) uni_data_arr.push(el);
+        });
+        $.each(data_user_arr, function(i, el){
+          if($.inArray(el, uni_data_user_arr) === -1) uni_data_user_arr.push(el);
+        });*/
+        $('#display4').html('data_arr.length='+data_arr.length+'<br>'+'data_user_arr.length='+data_user_arr.length+'<br>'+data_arr+'<br>'+data_user_arr+'<br>'+user_arrA+'<br>');
+    }
+    function test2(){
+        var user_name=[],html='';
+       /*for(var i=0;i<json_user_problem_ox.length;i++){
+        user_name.push(json_user_problem_ox.);
+       }*/
+        for(user in user_name){
+            html+=user+'#';
+        }
+        $('#display4').html(json_user_problem_ox);
+    }
+  </script>
+</head>
+<body>
+<button id="test1" onclick="only();">gg1</button>
+<button id="test2" onclick="preload();">gg2</button>
+<button id="test3" onclick="afterload();">gg3</button>
+<button id="test4" onclick="test2();">gg3</button>
+
+<div id="display"></div>
+<div id="display2"></div>
+<div id="display3"></div>
+<div id="display4"></div>
+<div id="display5"></div>
+</body>
+
+</html>

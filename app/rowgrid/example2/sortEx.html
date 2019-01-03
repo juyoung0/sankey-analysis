@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery를 이용한 JSON 데이터 구하기</title>
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/index_style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+      function loadJSON_right(){
+        $.getJSON('../json/accuracy_time.json', function(data) {
+            var html = '';
+            $('#dictionary2').html(data);
+          });
+      }
+      function getProblemName(str){
+          for(var i=1;i<=5;i++){
+             if(str.indexOf(i)!=-1){
+                 return "Problem "+str.charAt(str.indexOf(i));
+             }
+          }
+      }
+	function filterArray(arr){
+	    var retArr=[],chk=true;
+	    if(arr!=null) {
+        $.each(arr,function(entryIndex, entry){
+            if(retArr.length==0){retArr.push(entry);}
+            else{ for(var i=0; i<retArr.length;i++) {if(entry!=retArr[i]){chk=false;}else{chk=true;break;}}
+                   if(!chk){retArr.push(entry);}
+                   chk=true; }
+        });
+	    }
+	    return retArr;
+  }
+  function changeVisArr(arr){
+	    var retArr=[];
+	    if(arr!=null){
+	        $.each(arr,function(entryIndex,entry){
+	           if(entry=="Parallel Coordinate Plot"){
+                  retArr.push("PCP");
+             }else if(entry=="Scatter Plot"){
+                  retArr.push("SP");
+             }else if(entry=="Scatterplot Matrix"){
+                  retArr.push("SPLOM");
+             }
+          });
+      }
+      return retArr;
+  }
+  var Aarr=[];
+	$(document).ready(function() {
+	    $.getJSON('../json/accuracy_time.json', function(data) {
+	      var html = '';
+	     $.each(data, function(entryIndex, entry) {
+	    	  html+=entry.user_name+' ';
+	    	  Aarr.push(entry.accuracy);
+	    	  html+=entry.accuracy+' ';
+	    	  html+=entry.time+'<br>';
+	      });
+	      $('#dictionary').html(html);
+        return false;
+	  });
+	});
+	function sort(){
+	    if(Aarr.length !=0 || Aarr !=null){
+          for (var i=0;i<Aarr.length-1;i++){
+            var tmp=i;
+            for( var j=i+1;j<Aarr.length;j++){
+              if(Aarr[tmp]>=Aarr[j]) tmp = j;
+            }
+            Aarr[tmp] = [Aarr[i], Aarr[i] = Aarr[tmp]][0];
+           /* arr[tmp] = [arr[i], arr[i] = arr[tmp]][0];*/
+            /*alert(Aarr[tmp]+'//'+Aarr[tmp]+'//'+arr[tmp]+'//'+arr[i]);*/
+          }
+      }
+      $('#sort_result').html(Aarr);
+  }
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <div class="letters">
+        <div class="letter" id="target">
+          <h3><a href="#" onclick="sort()">클릭</a></h3>
+      	</div>
+   	  </div>
+
+      <div id="dictionary"></div>
+      <div id="sort_result"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+{"session":
+  [
+    {"session_name": "Problem 1",
+      "annotation": 1,
+      "vis_types": ["Parallel Coordinate Plot", "Scatter Plot", "Parallel Coordinate Plot", "Scatterplot Matrix"],
+      "log": 189},
+
+    {"session_name": "Problem 2",
+      "annotation": 1,
+      "vis_types": ["Parallel Coordinate Plot"],
+      "log": 104},
+
+    {"session_name": "Problem 3",
+      "annotation": 1,
+      "vis_types": ["Parallel Coordinate Plot"],
+      "log": 76},
+
+    {"session_name": "Problem 4",
+      "annotation": 1,
+      "vis_types": ["Parallel Coordinate Plot", "Scatterplot Matrix", "Parallel Coordinate Plot", "Scatterplot Matrix", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot",
+        "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot"],
+      "log": 503},
+
+    {"session_name": "Problem 5",
+      "annotation": 1,
+      "vis_types": ["Parallel Coordinate Plot"], "log": 69}
+  ],
+  "project_name": "experiment",
+  "user": "A1",
+  "proj_annotation": 5,
+  "proj_vis_types": ["Parallel Coordinate Plot", "Scatter Plot", "Parallel Coordinate Plot", "Scatterplot Matrix", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot",
+    "Scatterplot Matrix", "Parallel Coordinate Plot", "Scatterplot Matrix", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot"],
+  "proj_log": 941
+}
+{"session":
+  [
+    {"session_name": "Problem 1",
+      "annotation": 1,
+      "vis_types": ["Scatter Plot", "Parallel Coordinate Plot", "Scatterplot Matrix"],
+      "log": 43},
+
+    {"session_name": "Problem 2",
+      "annotation": 1,
+      "vis_types": ["Parallel Coordinate Plot", "Scatterplot Matrix", "Scatter Plot"],
+      "log": 125},
+
+    {"session_name": "Problem 3",
+      "annotation": 1,
+      "vis_types": ["Scatter Plot"],
+      "log": 24},
+
+    {"session_name": "Problem 4",
+      "annotation": 1,
+      "vis_types": ["Scatterplot Matrix"],
+      "log": 63},
+
+    {"session_name": "Problem 5",
+      "annotation": 1,
+      "vis_types": ["Scatterplot Matrix", "Scatter Plot"],
+      "log": 117}
+  ],
+  "project_name": "experiment",
+  "user": "A2",
+  "proj_annotation": 5,
+  "proj_vis_types": ["Scatter Plot", "Parallel Coordinate Plot", "Scatterplot Matrix", "Parallel Coordinate Plot", "Scatterplot Matrix", "Scatter Plot", "Scatter Plot", "Scatterplot Matrix", "Scatterplot Matrix", "Scatter Plot"],
+  "proj_log": 372
+}
+{"session":
+[
+  {"session_name": "Problem 1",
+    "annotation": 1,
+    "vis_types": ["Parallel Coordinate Plot", "Scatterplot Matrix"],
+    "log": 41},
+  {"session_name": "Problem 2", "annotation": 1, "vis_types": ["Parallel Coordinate Plot", "Scatter Plot", "Scatter Plot"], "log": 58},
+  {"session_name": "Problem 3", "annotation": 0, "vis_types": ["Parallel Coordinate Plot", "Scatterplot Matrix"], "log": 47},
+  {"session_name": "Problem 3_branch", "annotation": 0, "vis_types": ["Parallel Coordinate Plot", "Scatterplot Matrix"], "log": 32},
+  {"session_name": "Problem 3_branch 1", "annotation": 1, "vis_types": ["Parallel Coordinate Plot", "Scatterplot Matrix"], "log": 38},
+  {"session_name": "Problem 3 branch", "annotation": 0, "vis_types": ["Parallel Coordinate Plot", "Scatterplot Matrix"], "log": 36},
+  {"session_name": "Problem 3 branch 4", "annotation": 0, "vis_types": ["Parallel Coordinate Plot", "Scatterplot Matrix", "Parallel Coordinate Plot"], "log": 94},
+  {"session_name": "Problem 4", "annotation": 1, "vis_types": ["Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot",
+    "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Scatter Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Scatterplot Matrix", "Parallel Coordinate Plot"], "log": 354},
+  {"session_name": "Problem 5", "annotation": 2, "vis_types": ["Parallel Coordinate Plot"], "log": 28}
+],
+  "project_name": "experiment",
+  "user": "B40",
+  "proj_annotation": 6,
+  "proj_vis_types": ["Parallel Coordinate Plot", "Scatterplot Matrix", "Parallel Coordinate Plot", "Scatter Plot", "Scatter Plot", "Parallel Coordinate Plot",
+    "Scatterplot Matrix", "Parallel Coordinate Plot", "Scatterplot Matrix", "Parallel Coordinate Plot", "Scatterplot Matrix", "Parallel Coordinate Plot", "Scatterplot Matrix", "Parallel Coordinate Plot",
+    "Scatterplot Matrix", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot",
+    "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Scatter Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Scatterplot Matrix", "Parallel Coordinate Plot", "Parallel Coordinate Plot"],
+  "proj_log": 728}
+
+
+
+{"project_name": "experiment",
+  "proj_branch": 13,
+  "proj_log": 411,
+  "proj_vis_types": ["Scatterplot Matrix", "Scatter Plot", "Parallel Coordinate Plot", "Scatter Plot", "Parallel Coordinate Plot",
+    "Scatter Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot",
+    "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot",
+    "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot",
+    "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot"],
+  "proj_annotation": 5,
+  "user": "B49",
+  "session": [
+    {"annotation": 1,
+      "log": 47,
+      "session_name": "Problem 1",
+      "branch": 0,
+      "vis_types": ["Scatterplot Matrix", "Scatter Plot", "Parallel Coordinate Plot", "Scatter Plot"]
+    },
+    {"annotation": 1, "log": 45, "session_name": "Problem 2", "branch": 0, "vis_types": ["Parallel Coordinate Plot", "Scatter Plot"]},
+    {"annotation": 1, "log": 39, "session_name": "Problem 3", "branch": 1, "vis_types": ["Parallel Coordinate Plot", "Parallel Coordinate Plot"]},
+    {"annotation": 0, "log": 45, "session_name": "Problem 4", "branch": 1, "vis_types": ["Parallel Coordinate Plot", "Parallel Coordinate Plot"]},
+    {"annotation": 1, "log": 167, "session_name": "4", "branch": 6, "vis_types": ["Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot",
+      "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot"]},
+    {"annotation": 1, "log": 68, "session_name": "Problem 5", "branch": 5,
+  "vis_types": ["Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot", "Parallel Coordinate Plot"]}
+  ]
+}

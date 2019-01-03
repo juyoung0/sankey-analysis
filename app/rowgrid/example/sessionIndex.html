@@ -1,0 +1,106 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UserStudy - Sankey</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/index_style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/checkbox.css">
+  <link rel="stylesheet" href="../css/fix-nav.css">
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="../js/json_data.js"></script>
+  <script src="../jquery.row-grid.js"></script>
+  <script src="../js/sessionIndex.js"></script>
+  <script src="../js/ses_json_read.js"></script>
+  <script src="../js/sort_json.js"></script>
+  <!--<script src="../js/fix-nav.js"></script>-->
+</head>
+<body style="background-color:#f8f8f8">
+   <nav class="navbar navbar-default navbar-fixed-top" id="header">
+  <div class="container-fluid navbar-container" id="header-container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">User History</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#" id="session_or_unit">Session Sankey</a></li>
+       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Color_Info<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><img src="../image/color_explain.PNG"></li>
+        </ul>
+      </li>
+       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Color_Info2<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><img src="../image/color_explain2.PNG"></li>
+          </ul>
+        </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="ses_nav_group">Group<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#" onclick="$('#next').html('');showSankeyImageGROUP('all','ses_all');loadJSON();loadJSON2();" >All  <span id="ses_all"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span></a></li>
+          <li><a href="#" onclick="$('#next').html('');showSankeyImageGROUP('A','ses_A');loadJSON();loadJSON2();" >A (No history, No branch)  <span id="ses_A"></span></a></li>
+          <li><a href="#" onclick="$('#next').html('');showSankeyImageGROUP('B','ses_B');loadJSON();loadJSON2();" >B (Yes branch)  <span id="ses_B"></span></a></li>
+          <li><a href="#" onclick="$('#next').html('');showSankeyImageGROUP('C','ses_C');loadJSON();loadJSON2();" >C (No history, Yes branch)  <span id="ses_C"></span></a></li>
+          <li><a href="#" onclick="$('#next').html('');showSankeyImageGROUP('D','ses_D');loadJSON();loadJSON2();" >D (Yes history, Yes branch)  <span id="ses_D"></span></a></li>
+          <li><a href="#" onclick="$('#next').html('');showSankeyImageGROUP('E','ses_E');loadJSON();loadJSON2();" >E (Session branch)  <span id="ses_E"></span></a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <!--<a href="./index.html" class="w3-button w3-teal">-->
+        <a href="#" onclick="pageMove()" class="w3-button w3-teal">
+          <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+          Unit Sankey
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="container-fluid" style="margin-top:-15px;">
+     <div class="tag_chk_set">
+         <span class="w3-tag w3-large" style="background-color: #ca0020">Accuracy</span>&nbsp;&nbsp;&nbsp;
+         <input type="checkbox" id="ses_Accuracy_asc" onclick="handleChk(this.id);$('#next').html('');showSankeyImageGROUP(curr_group,'ses_'+curr_group);loadJSON();loadJSON2();"/>
+         <label for="ses_Accuracy_asc"><span></span>asc (+)</label>
+         <input type="checkbox" id="ses_Accuracy_des" onclick="handleChk(this.id);$('#next').html('');showSankeyImageGROUP(curr_group,'ses_'+curr_group);loadJSON();loadJSON2();"/>
+         <label for="ses_Accuracy_des"><span></span>des (-)</label>
+     </div>
+     <div class="tag_chk_set">
+         <span class="w3-tag w3-large" style="background-color: #f4a582">Time</span>&nbsp;&nbsp;&nbsp;
+         <input type="checkbox" id="ses_Time_asc" onclick="handleChk(this.id);$('#next').html('');showSankeyImageGROUP(curr_group,'ses_'+curr_group);loadJSON();loadJSON2();"/>
+         <label for="ses_Time_asc"><span></span>asc (+)</label>
+         <input type="checkbox" id="ses_Time_des" onclick="handleChk(this.id);$('#next').html('');showSankeyImageGROUP(curr_group,'ses_'+curr_group);loadJSON();loadJSON2();"/>
+         <label for="ses_Time_des"><span></span>des (-)</label>
+     </div>
+     <div class="tag_chk_set">
+         <span class="w3-tag w3-large" style="background-color: #92c5de">Interaction(=log)</span>&nbsp;&nbsp;&nbsp;
+         <input type="checkbox" id="ses_Interaction_asc" onclick="handleChk(this.id);$('#next').html('');showSankeyImageGROUP(curr_group,'ses_'+curr_group);loadJSON();loadJSON2();"/>
+         <label for="ses_Interaction_asc"><span></span>asc (+)</label>
+         <input type="checkbox" id="ses_Interaction_des" onclick="handleChk(this.id);$('#next').html('');showSankeyImageGROUP(curr_group,'ses_'+curr_group);loadJSON();loadJSON2();"/>
+         <label for="ses_Interaction_des"><span></span>des (-)</label>
+     </div>
+     <div class="tag_chk_set">
+         <span class="w3-tag w3-large" style="background-color: #0571b0">Branch</span>&nbsp;&nbsp;&nbsp;
+         <input type="checkbox" id="ses_Branch_asc" onclick="handleChk(this.id);$('#next').html('');showSankeyImageGROUP(curr_group,'ses_'+curr_group);loadJSON();loadJSON2();"/>
+         <label for="ses_Branch_asc"><span></span>asc (+)</label>
+         <input type="checkbox" id="ses_Branch_des" onclick="handleChk(this.id);$('#next').html('');showSankeyImageGROUP(curr_group,'ses_'+curr_group);loadJSON();loadJSON2();"/>
+         <label for="ses_Branch_des"><span></span>des (-)</label>
+     </div>
+    </div>
+
+   <!-- Items with example images -->
+  <div class="container-fluid" id="next"></div>
+  <div id="gotop"></div>
+  <script src="../js/jquery.gotop.js"></script>
+  <script>
+    $('#gotop').gotop({
+      customHtml: '<i class="fa fa-angle-up fa-2x"></i>',
+      bottom: '2em',
+      right: '2em'
+    });
+  </script>
+
+</body>
+</html>

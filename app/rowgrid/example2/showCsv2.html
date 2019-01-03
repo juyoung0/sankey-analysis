@@ -1,0 +1,68 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+  function csvUpload(csvText){
+        //Split all the text into seperate lines on new lines and carriage return feeds
+        var allTextLines = csvText.split(/\r\n|\n/);
+        //Split per line on tabs and commas
+        var headers = allTextLines[0].split(/\t|,/);
+        var lines = [];
+        var locations = [];
+
+        for (var i=0; i<allTextLines.length; i++) {
+            var data = allTextLines[i].split(/\t|,/);
+
+            if (data.length == headers.length) {
+
+            var location = {"user_name":data[0], "problem1":data[1], "problem2":data[2],"problem3":data[3], "problem4":data[4], "problem5":data[5]};
+            locations.push(location);
+
+            }
+
+        }
+        $('#JSON').html(JSON.stringify(locations));
+        return locations;
+    }
+
+$(function () {
+    $("#upload").bind("click", function () {
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+        if (regex.test($("#fileUpload").val().toLowerCase())) {
+            if (typeof (FileReader) != "undefined") {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    csvUpload(e.target.result);
+                    var table = $("<table />");
+                    var rows = e.target.result.split("\n");
+                    for (var i = 0; i < rows.length; i++) {
+                        var row = $("<tr />");
+                        var cells = rows[i].split(",");
+                        for (var j = 0; j < cells.length; j++) {
+                            var cell = $("<td />");
+                            cell.html(cells[j]);
+                            row.append(cell);
+                        }
+                        table.append(row);
+                    }
+                    $("#dvCSV").html('');
+                    $("#dvCSV").append(table);
+                }
+                reader.readAsText($("#fileUpload")[0].files[0]);
+            } else {
+                alert("This browser does not support HTML5.");
+            }
+        } else {
+            alert("Please upload a valid CSV file.");
+        }
+    });
+});
+
+
+</script>
+<input type="file" id="fileUpload" />
+<input type="button" id="upload" value="Upload" />
+<hr />
+<div id="dvCSV">
+</div>
+<div id="JSON">
+  <!--csv파일을 json파일로 변환시키는 곳-->
+</div>

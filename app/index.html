@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/salvattore.js"></script>
+ <script>
+   function alertF(){
+       for (var i=0;i<dirnames.length;i++) {
+         //alert(dirnames[i]);
+         var index = dirnames[i].indexOf('static');
+         var relDirname=dirnames[i].substring(index,dirnames[i].length);
+
+         var yy=document.createElement("div");
+         yy.setAttribute("style","float: left;width:auto");
+
+         var y= document.createElement("div");
+         y.setAttribute("class","w3-card-2");
+
+         var x = document.createElement("IMG");
+         x.setAttribute("src", relDirname);
+         x.setAttribute("class","w3-border");
+         x.setAttribute("alt", "The Pulpit Rock");
+
+         var z = document.createElement("div");
+         z.innerHTML = relDirname.substring(relDirname.indexOf('sankey')+7,relDirname.indexOf('sankey')+9);
+
+         y.appendChild(x);
+         y.appendChild(z);
+
+          yy.appendChild(y);
+          document.getElementById('imagepanel').appendChild(yy);
+         /*document.body.appendChild(x);*/
+       }
+   }
+   function myFunction() {
+    var x = document.getElementById("demo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+   function myFunction2() {
+
+       for(var i=0; i<username.length;i++){
+           uname=username[i];
+           for(var j=0;j<username[i].length;j++){
+               sname=uname[j];
+               for(var k=0;k<sname.length;k++){
+                   pname=sname[k];
+                   var x = document.createElement("IMG");
+                    x.setAttribute("src", '"'+uname+'"'+'/'+'"'+sname+'"'+'/'+pname);
+                    x.setAttribute("alt", "The Pulpit Rock");
+                    document.body.appendChild(x);
+               }
+           }
+       }
+      /*var x = document.createElement("IMG");
+      x.setAttribute("src", "img_pulpit.jpg");
+      x.setAttribute("width", "304");
+      x.setAttribute("height", "228");
+      x.setAttribute("alt", "The Pulpit Rock");
+      document.body.appendChild(x);*/
+      function changeUser(userID){
+          $('#imagepanel').remove();
+
+      }
+
+  }
+  </script>
+<body onload="alertF()">
+  <div class="w3-bar w3-light-grey">
+    <a href="#" class="w3-bar-item w3-button">User History</a>
+    <!--<a href="#" class="w3-bar-item w3-button"></a>-->
+    <div class="w3-dropdown-click">
+      <button class="w3-button" onclick="myFunction()">
+        Users<i class="fa fa-caret-down"></i>
+      </button>
+      <div id="demo" class="w3-dropdown-content w3-bar-block w3-card-2">
+        <a href="#" onclick="changeUser('A2')" class="w3-bar-item w3-button">A2</a>
+        <a href="#" onclick="changeUser('A3')" class="w3-bar-item w3-button">A3</a>
+      </div>
+    </div>
+  </div>
+  <div id="imagepanel" style="display:inline;width:100%">
+
+
+  </div>
+</body>
+</html>

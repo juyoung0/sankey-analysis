@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html >
+  <head>
+     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+    <style> /* set the CSS */
+      body { font: 12px Arial;}
+      div.tooltip {
+          text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+  <img src="../SANKEY_GROUP_B/A9/SESSION/s.PNG" id="hello"/>
+    <script type="text/javascript">
+      var tooltip = d3.select("body")
+        .attr("class","tooltip")
+        .append("div")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .style("background-color","lightsteelblue")
+        .style("border-radius","8px")
+        .style("pointer-events","none")
+        .style("padding","2px")
+        .style("font","12px sans-serif")
+        .style("text-align","center")
+        .html("a simple"+'<br>'+" tooltip");
+      d3.select("#hello")
+        .on("mouseover", function(){return tooltip.style("visibility", "visible");})
+        .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+    </script>
+  </body>
+</html>

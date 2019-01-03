@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>
+    function getUrlParams() {
+      var params = {};
+      window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+      return params;
+    }
+    window.onload=function(){
+        oParams=getUrlParams();
+        if(oParams.prob==''||oParams.prob==null){oParams.prob=0 }
+        if(oParams.group=="A"){showSankeyImage('A',oParams.prob,'unit_A');}
+        else if(oParams.group=="B"){showSankeyImage('B',oParams.prob,'unit_B'); }
+        else if(oParams.group=="C"){showSankeyImage('C',oParams.prob,'unit_C'); }
+        else if(oParams.group=="D"){showSankeyImage('D',oParams.prob,'unit_D'); }
+        else {showSankeyImage('all','all',null);}
+    }
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>
